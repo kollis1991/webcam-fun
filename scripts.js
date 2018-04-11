@@ -29,6 +29,14 @@ function paintToCanvas (){
 function takePhoto(){
     snap.currentTime = 0;
     snap.play();
+
+    const data = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'handsome');
+    link.innerHTML = `<img src = "${data}" alt="Handsome"/>`
+    strip.insertBefore(link, strip.firstChild);
+
 }
 getVideo();
 video.addEventListener('canplay', paintToCanvas);
